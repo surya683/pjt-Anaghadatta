@@ -193,7 +193,14 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) =
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="lg:hidden fixed inset-0 top-[72px] ios-glass z-40 p-6 flex flex-col gap-6 animate-fade-in">
+        <div 
+          className="lg:hidden fixed inset-0 top-[72px] z-40 p-6 flex flex-col gap-6 animate-fade-in border-t border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]"
+          style={{
+            backgroundColor: 'rgba(15, 23, 42, 0.82)',
+            backdropFilter: 'blur(30px)',
+            WebkitBackdropFilter: 'blur(30px)'
+          }}
+        >
           <div className="flex flex-col gap-4">
             {navItems.map((item) => (
               <button
