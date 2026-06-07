@@ -125,7 +125,7 @@ export const Portfolio: React.FC = () => {
           <span className="text-gradient-cyan-purple">Under Contract SLAs</span>
         </h1>
         <p className="text-base md:text-lg text-neutral-muted max-w-3xl leading-relaxed">
-          Explore real-world case studies detailing how Anaghadatta Tech Solutions software frameworks, customer support teams, and AI bots drive tangible efficiency improvements for clients.
+          Explore real-world case studies detailing how AD Tech Solutions software frameworks, customer support teams, and AI bots drive tangible efficiency improvements for clients.
         </p>
       </section>
 

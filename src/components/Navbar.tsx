@@ -59,7 +59,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) =
             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
           </div>
           <span className="font-bold text-xl tracking-tight text-white group-hover:text-highlight-cyan transition-colors">
-            ANAGHADATTA TECH SOLUTIONS
+            AD TECH SOLUTIONS
           </span>
         </div>
 
@@ -132,7 +132,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) =
             <div className="border-r border-white/5 pr-6">
               <div className="flex items-center gap-2 mb-3 text-highlight-cyan">
                 <Headphones className="w-5 h-5" />
-                <h4 className="font-bold text-sm uppercase tracking-wider">BPO & Call Center</h4>
+                <h4 className="font-bold text-sm uppercase tracking-wider">BPO</h4>
               </div>
               <p className="text-xs text-neutral-muted mb-4">Enterprise Inbound, Outbound sales, and multi-channel customer operations.</p>
               <ul className="space-y-2 text-sm text-neutral-muted">

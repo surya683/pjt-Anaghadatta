@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Mail, MapPin, Phone, Clock, Send, Check } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  setCurrentPage: (page: string) => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [localTime, setLocalTime] = useState('');
@@ -55,7 +59,7 @@ export const Footer: React.FC = () => {
             <div className="w-8 h-8 bg-gradient-to-tr from-secondary-blue to-highlight-cyan rounded flex items-center justify-center shadow-md">
               <span className="font-extrabold text-white text-base">A</span>
             </div>
-            <span className="font-bold text-lg tracking-tight text-white">ANAGHADATTA TECH SOLUTIONS</span>
+            <span className="font-bold text-lg tracking-tight text-white">AD TECH SOLUTIONS</span>
           </div>
           <p className="text-sm text-neutral-muted leading-relaxed">
             Enterprise-grade IT consulting, multi-channel BPO operations, and cutting-edge artificial intelligence automation systems. Scaling organizations globally.
@@ -77,10 +81,10 @@ export const Footer: React.FC = () => {
         <div>
           <h4 className="font-bold text-white uppercase tracking-wider text-xs mb-6">Service Pillars</h4>
           <ul className="space-y-3 text-sm text-neutral-muted">
-            <li className="hover:text-highlight-cyan transition-colors cursor-pointer">BPO Customer Solutions</li>
-            <li className="hover:text-highlight-cyan transition-colors cursor-pointer">Software Engineering</li>
-            <li className="hover:text-highlight-cyan transition-colors cursor-pointer">AI Agent & Bot Integration</li>
-            <li className="hover:text-highlight-cyan transition-colors cursor-pointer">Enterprise Infrastructure IT</li>
+            <li className="hover:text-highlight-cyan transition-colors cursor-pointer" onClick={() => setCurrentPage('services')}>BPO Solutions</li>
+            <li className="hover:text-highlight-cyan transition-colors cursor-pointer" onClick={() => setCurrentPage('services')}>Software Engineering</li>
+            <li className="hover:text-highlight-cyan transition-colors cursor-pointer" onClick={() => setCurrentPage('services')}>AI Agent & Bot Integration</li>
+            <li className="hover:text-highlight-cyan transition-colors cursor-pointer" onClick={() => setCurrentPage('services')}>Enterprise Infrastructure IT</li>
           </ul>
         </div>
 
@@ -90,7 +94,7 @@ export const Footer: React.FC = () => {
           <ul className="space-y-4 text-sm text-neutral-muted">
             <li className="flex items-start gap-2.5">
               <MapPin className="w-4 h-4 text-highlight-cyan shrink-0 mt-0.5" />
-              <span>100 Enterprise Way, Suite 400, Tech Valley, CA 94025</span>
+              <span>Plot No. 12, HITEC City, Hyderabad, India</span>
             </li>
             <li className="flex items-center gap-2.5">
               <Phone className="w-4 h-4 text-highlight-cyan shrink-0" />
@@ -98,7 +102,7 @@ export const Footer: React.FC = () => {
             </li>
             <li className="flex items-center gap-2.5">
               <Mail className="w-4 h-4 text-highlight-cyan shrink-0" />
-              <span>operations@anaghadatta.com</span>
+              <span>operations@adtechsolutions.com</span>
             </li>
             <li className="flex items-center gap-2.5">
               <Clock className="w-4 h-4 text-highlight-purple shrink-0" />
@@ -145,12 +149,11 @@ export const Footer: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-6 border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-muted relative z-10">
         <div>
-          © {new Date().getFullYear()} Anaghadatta Tech Solutions Inc. All rights reserved.
+          © {new Date().getFullYear()} AD Tech Solutions Inc. All rights reserved.
         </div>
         <div className="flex gap-6">
-          <span className="hover:text-white transition-colors cursor-pointer">Privacy Policy</span>
-          <span className="hover:text-white transition-colors cursor-pointer">Terms & Conditions</span>
-          <span className="hover:text-white transition-colors cursor-pointer">Security Standards</span>
+          <span className="hover:text-white transition-colors cursor-pointer" onClick={() => { setCurrentPage('privacy'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Privacy Policy</span>
+          <span className="hover:text-white transition-colors cursor-pointer" onClick={() => { setCurrentPage('terms'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Terms & Conditions</span>
         </div>
       </div>
     </footer>

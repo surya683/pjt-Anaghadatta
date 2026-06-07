@@ -7,7 +7,7 @@ export const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const categories = [
-    { label: 'BPO & Call Center Operations', id: 'bpo' as const, icon: <Headphones className="w-4 h-4" /> },
+    { label: 'BPO', id: 'bpo' as const, icon: <Headphones className="w-4 h-4" /> },
     { label: 'AI Bots & Automation', id: 'ai' as const, icon: <Sparkles className="w-4 h-4" /> },
     { label: 'Software Engineering', id: 'dev' as const, icon: <Cpu className="w-4 h-4" /> },
     { label: 'Contract SLAs & IT Support', id: 'support' as const, icon: <AlertCircle className="w-4 h-4" /> },
@@ -16,7 +16,7 @@ export const FAQ: React.FC = () => {
   const faqs = {
     bpo: [
       {
-        q: 'How fast can Anaghadatta Tech Solutions scale up support agent teams for seasonal volume spikes?',
+        q: 'How fast can AD Tech Solutions scale up support agent teams for seasonal volume spikes?',
         a: 'We can ramp up support teams from 5 agents to 50+ in under 4 weeks. We pull from our pre-vetted recruiter pipelines in Manila and Bangalore, applying immediate training regimens built around your internal SOP documents.',
       },
       {
@@ -24,8 +24,8 @@ export const FAQ: React.FC = () => {
         a: 'Yes. We operate around the clock, providing multi-channel customer care across email, live chat, inbound telephone, outbound campaigns, and social media escalations.',
       },
       {
-        q: 'What compliance security models does Anaghadatta Tech Solutions support?',
-        a: 'Anaghadatta Tech Solutions operates out of ISO 27001 audited physical centers. We support strict HIPAA, SOC2 Type II compliance, and PCI-DSS standards for fintech transactional customer support pipelines.',
+        q: 'What compliance security models does AD Tech Solutions support?',
+        a: 'AD Tech Solutions operates out of ISO 27001 audited physical centers. We support strict HIPAA, SOC2 Type II compliance, and PCI-DSS standards for fintech transactional customer support pipelines.',
       },
     ],
     ai: [
@@ -45,7 +45,7 @@ export const FAQ: React.FC = () => {
       },
       {
         q: 'Do you provide full source code ownership upon contract completion?',
-        a: 'Yes. All custom codebases, design assets, and database schemas engineered by Anaghadatta Tech Solutions are 100% owned by the client upon completion of milestones.',
+        a: 'Yes. All custom codebases, design assets, and database schemas engineered by AD Tech Solutions are 100% owned by the client upon completion of milestones.',
       },
     ],
     support: [
@@ -91,11 +91,10 @@ export const FAQ: React.FC = () => {
                 setActiveCategory(cat.id);
                 setOpenIndex(0); // Reset accordion to first item in new cat
               }}
-              className={`w-full p-4 rounded-xl border font-bold text-sm transition-all flex items-center gap-3 ${
-                activeCategory === cat.id
+              className={`w-full p-4 rounded-xl border font-bold text-sm transition-all flex items-center gap-3 ${activeCategory === cat.id
                   ? 'bg-white/5 border-highlight-cyan/30 text-white shadow-lg'
                   : 'bg-transparent border-white/5 text-neutral-muted hover:border-white/10 hover:text-white'
-              }`}
+                }`}
             >
               <span className={`p-1.5 rounded-lg border ${activeCategory === cat.id ? 'bg-highlight-cyan/10 border-highlight-cyan/20 text-highlight-cyan' : 'bg-white/5 border-white/5 text-neutral-muted'}`}>
                 {cat.icon}
@@ -124,9 +123,8 @@ export const FAQ: React.FC = () => {
 
               {/* Answer Expandable Wrapper */}
               <div
-                className={`transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                  openIndex === idx ? 'max-h-[300px] mt-4 opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
-                }`}
+                className={`transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${openIndex === idx ? 'max-h-[300px] mt-4 opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
+                  }`}
               >
                 <p className="text-sm text-neutral-muted leading-relaxed border-t border-white/5 pt-4">
                   {faq.a}

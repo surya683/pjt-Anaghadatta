@@ -84,7 +84,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentPage }) => {
           <div className="flex flex-col gap-6 items-center animate-fade-up">
             <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4.5 py-1.5 rounded-full w-fit backdrop-blur-md">
               <Sparkles className="w-4 h-4 text-highlight-cyan animate-pulse" />
-              <span className="text-xs font-semibold tracking-wide text-neutral-muted uppercase">Introducing ANAGHADATTA TECH SOLUTIONS Enterprise</span>
+              <span className="text-xs font-semibold tracking-wide text-neutral-muted uppercase">Introducing AD TECH SOLUTIONS Enterprise</span>
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-white">
@@ -128,7 +128,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentPage }) => {
         Integrated Services Engineered for Unlocked Growth
       </h2>
       <p className="text-sm md:text-base text-neutral-muted leading-relaxed">
-        ANAGHADATTA TECH SOLUTIONS provides comprehensive operations management. We unify human labor with deep technical engineering and automated intelligence to scale enterprise capacities.
+        AD TECH SOLUTIONS provides comprehensive operations management. We unify human labor with deep technical engineering and automated intelligence to scale enterprise capacities.
       </p>
     </div>
 
@@ -164,10 +164,10 @@ export const Home: React.FC<HomeProps> = ({ setCurrentPage }) => {
       {/* Why Choose Us Left Text */}
       <div className="lg:col-span-5 flex flex-col gap-6 text-left relative z-10">
         <span className="text-xs font-bold text-highlight-purple uppercase tracking-widest bg-highlight-purple/10 border border-highlight-purple/20 px-3 py-1 rounded-full w-fit">
-          The Anaghadatta Tech Solutions Benchmark
+          The AD Tech Solutions Benchmark
         </span>
         <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight">
-          Why Global Enterprises Choose Anaghadatta Tech Solutions
+          Why Global Enterprises Choose AD Tech Solutions
         </h2>
         <p className="text-sm md:text-base text-neutral-muted leading-relaxed">
           We do not just offer staffing or simple web design. We deploy fully integrated technical operational frameworks that combine elite software engineering and customer experience agents under a unified SLA.

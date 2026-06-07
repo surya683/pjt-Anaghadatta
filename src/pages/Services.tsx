@@ -11,7 +11,7 @@ export const Services: React.FC<ServicesProps> = ({ setCurrentPage }) => {
 
   const tabs = [
     { label: 'All Operations', id: 'all' as const },
-    { label: 'BPO Customer Care', id: 'bpo' as const },
+    { label: 'BPO', id: 'bpo' as const },
     { label: 'Software Dev', id: 'dev' as const },
     { label: 'AI & Automation', id: 'ai' as const },
     { label: 'Technical IT Support', id: 'support' as const },
@@ -23,7 +23,7 @@ export const Services: React.FC<ServicesProps> = ({ setCurrentPage }) => {
       category: 'bpo',
       icon: <Headphones className="w-6 h-6 text-highlight-cyan" />,
       title: 'Global Customer Support',
-      desc: 'Tier-1 and Tier-2 customer service channels operating 24/7/365 in English, Spanish, and multi-lingual options. Scaled staffing models.',
+      desc: 'Tier-1 and Tier-2 customer service channels operating 24/7/365 in English and multi-lingual options. Scaled staffing models.',
       benefits: ['Guaranteed <45s average speed of answer', '100% HIPAA and PCI compliance', 'Dedicated Team Leaders assigned to pods'],
       accent: 'cyan' as const,
     },
@@ -119,11 +119,10 @@ export const Services: React.FC<ServicesProps> = ({ setCurrentPage }) => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition-all duration-300 ${
-                activeTab === tab.id
+              className={`px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition-all duration-300 ${activeTab === tab.id
                   ? 'bg-gradient-to-r from-secondary-blue to-secondary-accent text-white shadow-lg'
                   : 'text-neutral-muted hover:text-white hover:bg-white/5'
-              }`}
+                }`}
             >
               {tab.label}
             </button>
@@ -143,11 +142,11 @@ export const Services: React.FC<ServicesProps> = ({ setCurrentPage }) => {
               <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:bg-white/10 transition-colors">
                 {service.icon}
               </div>
-              
+
               <h3 className="text-xl font-bold text-white mb-3 group-hover:text-highlight-cyan transition-colors">
                 {service.title}
               </h3>
-              
+
               <p className="text-sm text-neutral-muted leading-relaxed mb-6">
                 {service.desc}
               </p>

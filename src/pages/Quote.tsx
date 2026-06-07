@@ -6,19 +6,19 @@ import confetti from 'canvas-confetti';
 export const Quote: React.FC = () => {
   const [step, setStep] = useState<number>(1);
   const [service, setService] = useState<'bpo' | 'dev' | 'ai' | 'support'>('bpo');
-  
+
   // Parameter states
   const [headcount, setHeadcount] = useState<number>(10);
   const [complexity, setComplexity] = useState<'basic' | 'advanced' | 'enterprise'>('advanced');
   const [botChannels, setBotChannels] = useState<string[]>(['web']);
-  
+
   // User info states
   const [name, setName] = useState('');
   const [company, setCompany] = useState('');
   const [email, setEmail] = useState('');
-  const [budget, setBudget] = useState<number>(25000);
+  const [budget, setBudget] = useState<number>(2000000);
   const [desc, setDesc] = useState('');
-  
+
   // Validation Errors
   const [errors, setErrors] = useState<{ name?: string; email?: string; company?: string }>({});
   const [reportId] = useState(() => Math.floor(100000 + Math.random() * 900000));
@@ -35,7 +35,7 @@ export const Quote: React.FC = () => {
         setErrors(newErrors);
         return;
       }
-      
+
       setErrors({});
       confetti({
         particleCount: 100,
@@ -64,29 +64,29 @@ export const Quote: React.FC = () => {
     let savings = 0;
 
     if (service === 'bpo') {
-      setupCost = 1500 + headcount * 200;
-      monthlyCost = headcount * 2800; // Manila/BLR rates
-      savings = headcount * 4500; // Savings vs onshore staffing ($7.3k/mo)
+      setupCost = (1500 + headcount * 200) * 85;
+      monthlyCost = (headcount * 2800) * 85; // Manila/BLR rates
+      savings = (headcount * 4500) * 85; // Savings vs onshore staffing
     } else if (service === 'dev') {
       const complexityMultiplier = complexity === 'basic' ? 1 : complexity === 'advanced' ? 2.5 : 5;
-      setupCost = 8000 * complexityMultiplier;
-      monthlyCost = complexity === 'basic' ? 300 : complexity === 'advanced' ? 800 : 2500; // SLA support
+      setupCost = (8000 * complexityMultiplier) * 85;
+      monthlyCost = (complexity === 'basic' ? 300 : complexity === 'advanced' ? 800 : 2500) * 85; // SLA support
       savings = setupCost * 0.4;
     } else if (service === 'ai') {
       const channelCount = botChannels.length;
-      setupCost = 5000 + channelCount * 1500;
-      monthlyCost = 450 + channelCount * 250;
-      savings = 12000; // Projected monthly customer experience (CX) agent cost cuts
+      setupCost = (5000 + channelCount * 1500) * 85;
+      monthlyCost = (450 + channelCount * 250) * 85;
+      savings = 12000 * 85; // Projected monthly customer experience (CX) agent cost cuts
     } else if (service === 'support') {
-      setupCost = 2500;
-      monthlyCost = 3500; // Dedicated support team NOC
-      savings = 8000;
+      setupCost = 2500 * 85;
+      monthlyCost = 3500 * 85; // Dedicated support team NOC
+      savings = 8000 * 85;
     }
 
     return {
-      setup: setupCost.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }),
-      monthly: monthlyCost.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }),
-      savings: savings.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }),
+      setup: setupCost.toLocaleString('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }),
+      monthly: monthlyCost.toLocaleString('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }),
+      savings: savings.toLocaleString('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }),
     };
   };
 
@@ -117,13 +117,12 @@ export const Quote: React.FC = () => {
             {[1, 2, 3, 4].map((s) => (
               <span
                 key={s}
-                className={`w-8 h-1.5 rounded-full transition-all duration-300 ${
-                  s === step
+                className={`w-8 h-1.5 rounded-full transition-all duration-300 ${s === step
                     ? 'bg-highlight-cyan shadow-md shadow-highlight-cyan/25'
                     : s < step
-                    ? 'bg-gradient-to-r from-secondary-blue to-secondary-accent'
-                    : 'bg-white/10'
-                }`}
+                      ? 'bg-gradient-to-r from-secondary-blue to-secondary-accent'
+                      : 'bg-white/10'
+                  }`}
               />
             ))}
           </div>
@@ -133,11 +132,11 @@ export const Quote: React.FC = () => {
         {step === 1 && (
           <GlassCard glowColor="cyan" className="p-8 space-y-6">
             <h3 className="text-xl font-bold text-white mb-2">Select Your Primary Operational Target</h3>
-            <p className="text-xs text-neutral-muted">Which service segment will Anaghadatta Tech Solutions manage or architect for your company?</p>
+            <p className="text-xs text-neutral-muted">Which service segment will AD Tech Solutions manage or architect for your company?</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
-                { id: 'bpo' as const, label: 'Global BPO & Call Center', desc: 'Inbound care, telesales, & back-office teams', icon: <Headphones className="w-5 h-5 text-highlight-cyan" /> },
+                { id: 'bpo' as const, label: 'Global BPO', desc: 'Inbound care, telesales, & back-office teams', icon: <Headphones className="w-5 h-5 text-highlight-cyan" /> },
                 { id: 'dev' as const, label: 'Software Engineering', desc: 'Bespoke corporate SaaS, apps, & custom systems', icon: <Cpu className="w-5 h-5 text-secondary-accent" /> },
                 { id: 'ai' as const, label: 'AI Bots & Automatons', desc: 'LLM knowledge chatbots & workflow cron triggers', icon: <Sparkles className="w-5 h-5 text-highlight-purple" /> },
                 { id: 'support' as const, label: 'Technical IT Support NOC', desc: '24/7 remote infrastructure & employee helpdesks', icon: <Settings className="w-5 h-5 text-white" /> },
@@ -145,11 +144,10 @@ export const Quote: React.FC = () => {
                 <button
                   key={item.id}
                   onClick={() => setService(item.id)}
-                  className={`w-full p-5 rounded-xl border text-left flex gap-4 transition-all duration-300 ${
-                    service === item.id
+                  className={`w-full p-5 rounded-xl border text-left flex gap-4 transition-all duration-300 ${service === item.id
                       ? 'bg-white/5 border-highlight-cyan/30 text-white shadow-lg'
                       : 'bg-transparent border-white/5 text-neutral-muted hover:border-white/10 hover:text-white'
-                  }`}
+                    }`}
                 >
                   <span className={`p-2 rounded-lg border shrink-0 ${service === item.id ? 'bg-highlight-cyan/10 border-highlight-cyan/25' : 'bg-white/5 border-white/5'}`}>
                     {item.icon}
@@ -221,11 +219,10 @@ export const Quote: React.FC = () => {
                     <button
                       key={tier.id}
                       onClick={() => setComplexity(tier.id)}
-                      className={`p-4 rounded-xl border text-left flex flex-col justify-between h-full transition-all duration-300 ${
-                        complexity === tier.id
+                      className={`p-4 rounded-xl border text-left flex flex-col justify-between h-full transition-all duration-300 ${complexity === tier.id
                           ? 'bg-white/5 border-highlight-cyan/30 text-white shadow-lg'
                           : 'bg-transparent border-white/5 text-neutral-muted hover:border-white/10'
-                      }`}
+                        }`}
                     >
                       <h4 className="font-bold text-sm text-white mb-2 uppercase tracking-wide">{tier.label}</h4>
                       <p className="text-[11px] text-neutral-muted leading-relaxed">{tier.desc}</p>
@@ -251,11 +248,10 @@ export const Quote: React.FC = () => {
                       <button
                         key={chan.id}
                         onClick={() => handleChannelToggle(chan.id)}
-                        className={`p-4 rounded-xl border text-left flex items-center justify-between transition-all ${
-                          isChecked
+                        className={`p-4 rounded-xl border text-left flex items-center justify-between transition-all ${isChecked
                             ? 'bg-white/5 border-highlight-cyan/30 text-white shadow-lg'
                             : 'bg-transparent border-white/5 text-neutral-muted hover:border-white/10'
-                        }`}
+                          }`}
                       >
                         <span className="text-xs font-bold">{chan.label}</span>
                         <div className={`w-5 h-5 rounded border flex items-center justify-center ${isChecked ? 'bg-highlight-cyan border-transparent text-white' : 'border-white/10'}`}>
@@ -320,9 +316,8 @@ export const Quote: React.FC = () => {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="E.g. Jane Doe"
-                      className={`w-full bg-white/5 border rounded-xl pl-9 pr-4 py-2.5 text-xs text-white focus:outline-none focus:ring-1 transition-all ${
-                        errors.name ? 'border-red-500/50 focus:ring-red-500/20' : 'border-white/10 focus:border-highlight-cyan/50 focus:ring-highlight-cyan/20'
-                      }`}
+                      className={`w-full bg-white/5 border rounded-xl pl-9 pr-4 py-2.5 text-xs text-white focus:outline-none focus:ring-1 transition-all ${errors.name ? 'border-red-500/50 focus:ring-red-500/20' : 'border-white/10 focus:border-highlight-cyan/50 focus:ring-highlight-cyan/20'
+                        }`}
                     />
                     <Building className="w-3.5 h-3.5 text-neutral-muted absolute left-3 top-3.5" />
                   </div>
@@ -337,9 +332,8 @@ export const Quote: React.FC = () => {
                       value={company}
                       onChange={(e) => setCompany(e.target.value)}
                       placeholder="E.g. Acme Corp"
-                      className={`w-full bg-white/5 border rounded-xl pl-9 pr-4 py-2.5 text-xs text-white focus:outline-none focus:ring-1 transition-all ${
-                        errors.company ? 'border-red-500/50 focus:ring-red-500/20' : 'border-white/10 focus:border-highlight-cyan/50 focus:ring-highlight-cyan/20'
-                      }`}
+                      className={`w-full bg-white/5 border rounded-xl pl-9 pr-4 py-2.5 text-xs text-white focus:outline-none focus:ring-1 transition-all ${errors.company ? 'border-red-500/50 focus:ring-red-500/20' : 'border-white/10 focus:border-highlight-cyan/50 focus:ring-highlight-cyan/20'
+                        }`}
                     />
                     <Building className="w-3.5 h-3.5 text-neutral-muted absolute left-3 top-3.5" />
                   </div>
@@ -355,9 +349,8 @@ export const Quote: React.FC = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="jane.doe@company.com"
-                    className={`w-full bg-white/5 border rounded-xl pl-9 pr-4 py-2.5 text-xs text-white focus:outline-none focus:ring-1 transition-all ${
-                      errors.email ? 'border-red-500/50 focus:ring-red-500/20' : 'border-white/10 focus:border-highlight-cyan/50 focus:ring-highlight-cyan/20'
-                    }`}
+                    className={`w-full bg-white/5 border rounded-xl pl-9 pr-4 py-2.5 text-xs text-white focus:outline-none focus:ring-1 transition-all ${errors.email ? 'border-red-500/50 focus:ring-red-500/20' : 'border-white/10 focus:border-highlight-cyan/50 focus:ring-highlight-cyan/20'
+                      }`}
                   />
                   <Mail className="w-3.5 h-3.5 text-neutral-muted absolute left-3 top-3.5" />
                 </div>
@@ -369,14 +362,14 @@ export const Quote: React.FC = () => {
                 <div className="flex justify-between items-center mb-1.5">
                   <label className="text-[10px] font-bold text-neutral-muted uppercase tracking-wider block">Project Budget Allocation</label>
                   <span className="font-mono text-xs font-bold text-highlight-cyan bg-highlight-cyan/10 px-2 py-0.5 rounded border border-highlight-cyan/20">
-                    ${budget.toLocaleString()}
+                    ₹{budget.toLocaleString('en-IN')}
                   </span>
                 </div>
                 <input
                   type="range"
-                  min="5000"
-                  max="150000"
-                  step="5000"
+                  min="50000"
+                  max="5000000"
+                  step="50000"
                   value={budget}
                   onChange={(e) => setBudget(parseInt(e.target.value))}
                   className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-highlight-cyan"
@@ -447,7 +440,7 @@ export const Quote: React.FC = () => {
             {/* Estimates Financial breakdown */}
             <div className="space-y-4">
               <span className="text-[10px] font-bold text-neutral-muted uppercase tracking-wider block">Financial Framework Estimates</span>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="bg-white/5 border border-white/5 rounded-xl p-4 text-center">
                   <span className="text-[10px] font-bold text-neutral-muted uppercase tracking-wider block">Setup & Architecture</span>

@@ -9,6 +9,8 @@ import { Blog } from './pages/Blog';
 import { FAQ } from './pages/FAQ';
 import { Contact } from './pages/Contact';
 import { Quote } from './pages/Quote';
+import { Privacy } from './pages/Privacy';
+import { Terms } from './pages/Terms';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<string>('home');
@@ -41,6 +43,10 @@ function App() {
         return <Contact />;
       case 'quote':
         return <Quote />;
+      case 'privacy':
+        return <Privacy />;
+      case 'terms':
+        return <Terms />;
       default:
         return <Home setCurrentPage={setCurrentPage} />;
     }
@@ -66,7 +72,7 @@ function App() {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer setCurrentPage={setCurrentPage} />
     </div>
   );
 }

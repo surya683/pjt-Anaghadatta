@@ -14,7 +14,7 @@ export const Contact: React.FC = () => {
 
   // Chat Simulator states
   const [chatMessages, setChatMessages] = useState<Array<{ sender: 'user' | 'bot'; text: string }>>([
-    { sender: 'bot', text: 'Hello! I am Anaghadatta Tech Solutions AI. How can I assist you with our operational services today?' }
+    { sender: 'bot', text: 'Hello! I am AD Tech Solutions AI. How can I assist you with our operational services today?' }
   ]);
   const [chatInput, setChatInput] = useState('');
   const [botTyping, setBotTyping] = useState(false);
@@ -182,9 +182,9 @@ export const Contact: React.FC = () => {
           {/* Quick info buttons */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             {[
-              { icon: <MapPin className="text-highlight-cyan" />, label: 'San Francisco HQ', desc: '100 Enterprise Way, Suite 400' },
+              { icon: <MapPin className="text-highlight-cyan" />, label: 'Hyderabad HQ', desc: 'Plot No. 12, HITEC City, Hyderabad, India' },
               { icon: <Phone className="text-highlight-purple" />, label: 'Toll-Free Operations', desc: '+1 (800) 555-0190' },
-              { icon: <Mail className="text-secondary-accent" />, label: 'Corporate Desk', desc: 'operations@anaghadatta.com' },
+              { icon: <Mail className="text-secondary-accent" />, label: 'Corporate Desk', desc: 'operations@adtechsolutions.com' },
             ].map((info, idx) => (
               <GlassCard key={idx} glowColor="none" className="p-5 flex flex-col justify-center text-left">
                 <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center mb-3">
@@ -206,7 +206,7 @@ export const Contact: React.FC = () => {
                 <Bot className="w-4.5 h-4.5 text-highlight-purple" />
               </div>
               <div>
-                <span className="font-bold text-sm text-white block">Anaghadatta Tech Solutions AI Consultant</span>
+                <span className="font-bold text-sm text-white block">AD Tech Solutions AI Consultant</span>
                 <span className="text-[10px] text-highlight-cyan font-semibold flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-highlight-cyan animate-pulse" />
                   Live Operational Bot

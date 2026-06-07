@@ -28,9 +28,9 @@ export const Blog: React.FC = () => {
       glow: 'purple' as const,
       content: `The integration of Large Language Models (LLMs) into enterprise customer experience pipelines represents the single most significant operational shift of the decade. Traditionally, customer support scaling meant linear staffing growth. Today, intelligent RAG (Retrieval-Augmented Generation) systems enable companies to resolve up to 85% of tier-1 support tickets instantly.
 
-At Anaghadatta Tech Solutions, our LLM chatbot framework incorporates context-aware database lookups that pull from client-validated knowledgebase vaults. By parsing queries through automated safety and validation filters, we ensure that bot responses remain fully compliant under PCI and GDPR guidelines. If sentiment analysis flags a spike in user frustration or a payment question requires human credential access, our system triggers an automated fallback: transparently bridging the full chat history directly to a live Philippine or Indian support agent.
+At AD Tech Solutions, our LLM chatbot framework incorporates context-aware database lookups that pull from client-validated knowledgebase vaults. By parsing queries through automated safety and validation filters, we ensure that bot responses remain fully compliant under PCI and GDPR guidelines. If sentiment analysis flags a spike in user frustration or a payment question requires human credential access, our system triggers an automated fallback: transparently bridging the full chat history directly to a live Philippine or Indian support agent.
 
-This hybrid orchestration ensures absolute reliability. Companies operating under Anaghadatta Tech Solutions contracts experience an average first-contact resolution (FCR) increase of 30%, coupled with a massive 50% decrease in operational staffing drag over a 12-month cycle.`,
+This hybrid orchestration ensures absolute reliability. Companies operating under AD Tech Solutions contracts experience an average first-contact resolution (FCR) increase of 30%, coupled with a massive 50% decrease in operational staffing drag over a 12-month cycle.`,
     },
     {
       id: 'react-19-architecture',
@@ -44,7 +44,7 @@ This hybrid orchestration ensures absolute reliability. Companies operating unde
       glow: 'blue' as const,
       content: `React 19 introduces critical hooks and architectural patterns designed to streamline enterprise SaaS portal layouts. By introducing direct server component compilations and a built-in React compiler, modern frameworks decrease JS bundle sizes, offering instant visual loading times.
 
-To secure a certified 98+/100 Lighthouse performance rating for Anaghadatta Tech Solutions client portals, our software engineering team applies absolute type safety via strict TypeScript boundaries. Combined with Vite lazy-loaded route splitters and the brand-new Tailwind CSS v4 styling rules, our code eliminates redundant styling blocks. 
+To secure a certified 98+/100 Lighthouse performance rating for AD Tech Solutions client portals, our software engineering team applies absolute type safety via strict TypeScript boundaries. Combined with Vite lazy-loaded route splitters and the brand-new Tailwind CSS v4 styling rules, our code eliminates redundant styling blocks. 
 
 Tailwind v4's direct CSS configuration layer allows us to declare custom corporate tokens inside a single global @theme stylesheet. This architecture completely prevents post-CSS compilation parsing errors, reducing CSS assets sizes while supporting hardware-accelerated 3D transforms. The final outcome is a secure, responsive, lightning-fast application capable of handling high concurrent traffic spikes without database drops.`,
     },
@@ -60,12 +60,12 @@ Tailwind v4's direct CSS configuration layer allows us to declare custom corpora
       glow: 'cyan' as const,
       content: `Maintaining high-performance global call center operations requires continuous data auditing. Without strict metric baselines, support teams face operational drift, long wait times, and degraded customer satisfaction.
 
-Every professional BPO supervisor at Anaghadatta Tech Solutions tracks three core pillars:
+Every professional BPO supervisor at AD Tech Solutions tracks three core pillars:
 1. **Average Speed of Answer (ASA)**: Our targets demand an answer latency below 45 seconds for telephone queues, and under 30 seconds for live webchats.
 2. **First Contact Resolution (FCR)**: Resolving customer queries during the initial touchpoint completely eliminates redundant ticket loads, cutting costs.
 3. **Quality Assurance Score (QA)**: Weekly audio call audits evaluated by automated scoring models to ensure compliance.
 
-By coaching agents in Manila and Bangalore under standard scripts while leveraging instant AI assist widgets, Anaghadatta Tech Solutions consistently achieves a verified 97.2% CSAT average. This contractual accountability is backed by live operational dashboard access provided directly to client executives.`,
+By coaching agents in Manila and Bangalore under standard scripts while leveraging instant AI assist widgets, AD Tech Solutions consistently achieves a verified 97.2% CSAT average. This contractual accountability is backed by live operational dashboard access provided directly to client executives.`,
     },
     {
       id: 'secure-vpn-tunnels',
@@ -100,7 +100,7 @@ Our Network Operations Center (NOC) monitors active tunnels 24/7/365 using autom
           Corporate Insights
         </span>
         <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
-          Anaghadatta Tech Solutions Knowledgebase & <br />
+          AD Tech Solutions Knowledgebase & <br />
           <span className="text-gradient-cyan-purple">Operational Dispatches</span>
         </h1>
         <p className="text-base md:text-lg text-neutral-muted max-w-3xl leading-relaxed">
