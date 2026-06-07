@@ -54,8 +54,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) =
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled || isOpen
-          ? 'bg-[#0F172A]/90 backdrop-blur-xl border-b border-white/5 py-4'
+        isScrolled
+          ? 'bg-[#0F172A]/70 backdrop-blur-lg border-b border-white/5 py-4'
           : 'bg-transparent py-6'
       }`}
     >
@@ -205,20 +205,42 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) =
       {/* Mobile Drawer */}
       {isOpen && (
         <div 
-          className="lg:hidden fixed inset-0 top-[72px] z-40 p-6 flex flex-col gap-6 animate-fade-in border-t border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]"
+          className="lg:hidden fixed inset-0 z-[9999] p-6 flex flex-col animate-fade-in"
           style={{
-            backgroundColor: 'rgba(15, 23, 42, 0.95)',
-            backdropFilter: 'blur(30px)',
-            WebkitBackdropFilter: 'blur(30px)'
+            backgroundColor: 'rgba(10, 10, 10, 0.95)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)'
           }}
         >
-          <div className="flex flex-col gap-4">
+          {/* Drawer Header */}
+          <div className="flex items-center justify-between mb-8 border-b border-white/5 pb-6">
+            <div 
+              className="flex items-center gap-2 cursor-pointer" 
+              onClick={() => handleNavClick('home')}
+            >
+              <div className="w-8 h-8 bg-gradient-to-tr from-secondary-blue to-highlight-cyan rounded flex items-center justify-center shadow-md">
+                <span className="font-extrabold text-white text-base">A</span>
+              </div>
+              <span className="font-bold text-lg tracking-tight text-white">
+                AD TECH SOLUTIONS
+              </span>
+            </div>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="text-white hover:text-highlight-cyan transition-colors p-1"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="flex flex-col gap-6 text-left">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`text-left text-lg font-semibold py-2 border-b border-white/5 ${
-                  currentPage === item.id ? 'text-highlight-cyan' : 'text-neutral-muted'
+                className={`text-left text-xl font-bold py-2 border-b border-white/5 transition-colors ${
+                  currentPage === item.id ? 'text-highlight-cyan' : 'text-neutral-muted hover:text-white'
                 }`}
               >
                 {item.label}
@@ -226,9 +248,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) =
             ))}
           </div>
 
+          {/* CTA Button */}
           <button
             onClick={() => handleNavClick('quote')}
-            className="w-full text-center bg-gradient-to-r from-secondary-blue to-secondary-accent text-white py-3 rounded-xl font-bold text-base shadow-lg shadow-secondary-blue/10 mt-auto"
+            className="w-full text-center bg-gradient-to-r from-secondary-blue to-secondary-accent text-white py-3.5 rounded-xl font-bold text-base shadow-lg shadow-secondary-blue/10 mt-auto"
           >
             Get a Quote
           </button>
