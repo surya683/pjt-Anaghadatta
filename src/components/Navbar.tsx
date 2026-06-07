@@ -10,7 +10,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) =
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 20) {
@@ -22,6 +21,18 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) =
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Lock body scroll when mobile menu is open to prevent background scrolling bleed
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   const handleNavClick = (pageId: string) => {
     setCurrentPage(pageId);
@@ -43,8 +54,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) =
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-[#0F172A]/70 backdrop-blur-lg border-b border-white/5 py-4'
+        isScrolled || isOpen
+          ? 'bg-[#0F172A]/90 backdrop-blur-xl border-b border-white/5 py-4'
           : 'bg-transparent py-6'
       }`}
     >
@@ -196,7 +207,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) =
         <div 
           className="lg:hidden fixed inset-0 top-[72px] z-40 p-6 flex flex-col gap-6 animate-fade-in border-t border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]"
           style={{
-            backgroundColor: 'rgba(15, 23, 42, 0.82)',
+            backgroundColor: 'rgba(15, 23, 42, 0.95)',
             backdropFilter: 'blur(30px)',
             WebkitBackdropFilter: 'blur(30px)'
           }}
