@@ -54,9 +54,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) =
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-[#0F172A]/70 backdrop-blur-lg border-b border-white/5 py-4'
-          : 'bg-transparent py-6'
+        isOpen
+          ? 'bg-[#0F172A] py-4'
+          : isScrolled
+            ? 'bg-[#0F172A]/70 backdrop-blur-lg border-b border-white/5 py-4'
+            : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -205,11 +207,13 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) =
       {/* Mobile Drawer */}
       {isOpen && (
         <div 
-          className="lg:hidden fixed inset-0 z-[9999] p-6 flex flex-col animate-fade-in"
+          className="lg:hidden fixed top-0 left-0 z-[9999] p-6 flex flex-col animate-fade-in"
           style={{
-            backgroundColor: 'rgba(10, 10, 10, 0.95)',
+            backgroundColor: 'rgba(15, 23, 42, 0.95)',
             backdropFilter: 'blur(12px)',
-            WebkitBackdropFilter: 'blur(12px)'
+            WebkitBackdropFilter: 'blur(12px)',
+            width: '100vw',
+            height: '100vh'
           }}
         >
           {/* Drawer Header */}
