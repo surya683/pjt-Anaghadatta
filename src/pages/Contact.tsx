@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { GlassCard } from '../components/GlassCard';
-import { Mail, Phone, MapPin, Send, Check, Bot, ArrowRight, User } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export const Contact: React.FC = () => {
@@ -11,13 +11,6 @@ export const Contact: React.FC = () => {
   const [service, setService] = useState('bpo');
   const [formErrors, setFormErrors] = useState<{ name?: string; email?: string; msg?: string }>({});
   const [formSubmitted, setFormSubmitted] = useState(false);
-
-  // Chat Simulator states
-  const [chatMessages, setChatMessages] = useState<Array<{ sender: 'user' | 'bot'; text: string }>>([
-    { sender: 'bot', text: 'Hello! I am AD Tech Solutions AI. How can I assist you with our operational services today?' }
-  ]);
-  const [chatInput, setChatInput] = useState('');
-  const [botTyping, setBotTyping] = useState(false);
 
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,36 +41,10 @@ export const Contact: React.FC = () => {
     }, 5000);
   };
 
-  const handleSendMessage = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!chatInput.trim()) return;
-
-    const userText = chatInput;
-    setChatMessages((prev) => [...prev, { sender: 'user', text: userText }]);
-    setChatInput('');
-    setBotTyping(true);
-
-    setTimeout(() => {
-      let botResponse = 'Thank you for reaching out. A human account representative will analyze your query and contact you within 15 minutes.';
-      
-      const lowerText = userText.toLowerCase();
-      if (lowerText.includes('bpo') || lowerText.includes('call center')) {
-        botResponse = 'Our global BPO teams operate out of Manila and Bangalore. We provide Tier-1 and Tier-2 support with average speed of answers under 45 seconds under master service contracts.';
-      } else if (lowerText.includes('pricing') || lowerText.includes('cost')) {
-        botResponse = 'Our pricing models are completely custom and SLA-bound. Check out our Get a Quote page for immediate operations pricing estimations!';
-      } else if (lowerText.includes('ai') || lowerText.includes('bot')) {
-        botResponse = 'We deploy pre-trained LLM customer assistants integrated with Zendesk / Jira. Prototyping takes 2 weeks, and we guarantee 100% automated fallback options.';
-      }
-
-      setChatMessages((prev) => [...prev, { sender: 'bot', text: botResponse }]);
-      setBotTyping(false);
-    }, 1200);
-  };
-
   return (
     <div className="relative w-full pt-24 pb-16">
       {/* Contact Header */}
-      <section className="max-w-7xl mx-auto px-6 mb-12 text-left relative z-10 animate-fade-up">
+      <section className="max-w-3xl mx-auto px-6 mb-12 text-center flex flex-col items-center relative z-10 animate-fade-up">
         <span className="text-xs font-bold text-highlight-cyan uppercase tracking-widest bg-highlight-cyan/10 border border-highlight-cyan/20 px-3 py-1 rounded-full w-fit mb-4 block">
           Corporate Contact
         </span>
@@ -85,15 +52,14 @@ export const Contact: React.FC = () => {
           Connect with Our <br />
           <span className="text-gradient-cyan-purple">Enterprise Directors</span>
         </h1>
-        <p className="text-base md:text-lg text-neutral-muted max-w-3xl leading-relaxed">
-          Submit a secure operational RFP or chat instantly with our custom AI consultant to map response parameters.
+        <p className="text-base md:text-lg text-neutral-muted max-w-2xl leading-relaxed">
+          Submit a secure operational RFP to begin designing your enterprise solution.
         </p>
       </section>
 
-      {/* Main Content Grid */}
-      <section className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
-        {/* Contact Form & Info Column */}
-        <div className="lg:col-span-7 space-y-8">
+      {/* Main Content Layout */}
+      <section className="max-w-3xl mx-auto px-6 relative z-10">
+        <div className="space-y-8 animate-fade-up">
           <GlassCard glowColor="cyan" className="p-8 text-left border-white/10 relative overflow-hidden">
             {formSubmitted ? (
               <div className="py-12 text-center flex flex-col items-center justify-center gap-6">
@@ -195,77 +161,6 @@ export const Contact: React.FC = () => {
               </GlassCard>
             ))}
           </div>
-        </div>
-
-        {/* AI Chat Simulator Column */}
-        <div className="lg:col-span-5 flex flex-col h-[520px]">
-          <GlassCard glowColor="purple" className="p-0 border-white/10 flex flex-col h-full overflow-hidden text-left bg-gradient-to-b from-white/[0.01] to-white/[0.03]">
-            {/* Chat Header */}
-            <div className="p-4 border-b border-white/5 flex items-center gap-2.5 bg-white/[0.01]">
-              <div className="w-8 h-8 rounded-full bg-highlight-purple/10 border border-highlight-purple/20 flex items-center justify-center shrink-0">
-                <Bot className="w-4.5 h-4.5 text-highlight-purple" />
-              </div>
-              <div>
-                <span className="font-bold text-sm text-white block">AD Tech Solutions AI Consultant</span>
-                <span className="text-[10px] text-highlight-cyan font-semibold flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-highlight-cyan animate-pulse" />
-                  Live Operational Bot
-                </span>
-              </div>
-            </div>
-
-            {/* Messages Area */}
-            <div className="flex-grow p-4 overflow-y-auto space-y-4 font-sans text-xs">
-              {chatMessages.map((m, idx) => (
-                <div key={idx} className={`flex items-start gap-2.5 max-w-[85%] ${m.sender === 'user' ? 'ml-auto flex-row-reverse' : ''}`}>
-                  <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 border ${
-                    m.sender === 'user' ? 'bg-white/5 border-white/10 text-white' : 'bg-highlight-purple/10 border-highlight-purple/20 text-highlight-purple'
-                  }`}>
-                    {m.sender === 'user' ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
-                  </div>
-                  <div className={`rounded-2xl p-3 leading-relaxed border ${
-                    m.sender === 'user' 
-                      ? 'bg-secondary-blue/10 border-secondary-blue/20 text-white rounded-tr-none' 
-                      : 'bg-white/5 border-white/5 text-neutral-muted rounded-tl-none'
-                  }`}>
-                    {m.text}
-                  </div>
-                </div>
-              ))}
-
-              {botTyping && (
-                <div className="flex items-center gap-2 max-w-[85%]">
-                  <div className="w-6 h-6 rounded-full bg-highlight-purple/10 border border-highlight-purple/20 flex items-center justify-center shrink-0">
-                    <Bot className="w-3.5 h-3.5 text-highlight-purple" />
-                  </div>
-                  <div className="bg-white/5 border border-white/5 rounded-2xl rounded-tl-none p-3 flex gap-1">
-                    <span className="w-1.5 h-1.5 bg-neutral-muted rounded-full animate-bounce" />
-                    <span className="w-1.5 h-1.5 bg-neutral-muted rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
-                    <span className="w-1.5 h-1.5 bg-neutral-muted rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Input Form */}
-            <form onSubmit={handleSendMessage} className="p-3 border-t border-white/5 bg-white/[0.01] flex gap-2">
-              <input
-                type="text"
-                value={chatInput}
-                onChange={(e) => setChatInput(e.target.value)}
-                disabled={botTyping}
-                placeholder="Ask about BPO SLAs, Pricing, or AI..."
-                className="flex-grow bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-neutral-muted focus:outline-none focus:border-highlight-purple/50 focus:ring-1 focus:ring-highlight-purple/20"
-              />
-              <button
-                type="submit"
-                disabled={botTyping}
-                className="bg-highlight-purple hover:scale-105 active:scale-95 transition-all text-white p-2.5 rounded-xl flex items-center justify-center shadow-lg shadow-highlight-purple/10"
-              >
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </form>
-          </GlassCard>
         </div>
       </section>
     </div>
